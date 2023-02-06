@@ -7,104 +7,160 @@
         <meta name="description" content="About the creators of Refugee Pal">
         <link rel="icon" type="image/x-icon" href="images/refugeeicon.png">
         <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/c8e5706a2f.js" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaDF1nGqgbl1XRXxMWYcHbmrx2CH-VRvs&callback=initMap" async defer></script>
+        <script>
+            let category = "All";
+            var map;
+            var i, newMarker;
+            var markers = [];
+            var locations = [
+                ['Mosaic Surrey Newcomers Centre', 49.132275300585775, -122.84446560491966, 'green', 'Learn English'],
+                ['WorkBC Guildford', 49.1901159521042, -122.79920270345202, 'orange', 'Employment']
+            ];
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('embed'), {
+                center: {lat: 49.181, lng: -122.846},
+                zoom: 12,
+                disableDefaultUI: true,
+                zoomControl: true,
+                restriction: {
+                    latLngBounds: {
+                    north: 49.5,
+                    south: 48.75,
+                    east: -121.5,
+                    west: -123.5,
+                    },
+                },
+                });
+                for (i = 0; i < locations.length; i++) {
+                    newMarker = new google.maps.Marker({
+                        position: {lat: locations[i][1], lng: locations[i][2]},
+                        map: map,
+                        title: locations[i][0],
+                        icon: 'https://maps.google.com/mapfiles/ms/icons/' + locations[i][3] + '-dot.png',
+                    });
+                    newMarker.category = locations[i][4];
+                    newMarker.setVisible(true);
+                    markers.push(newMarker);
+                }
+            }
+            function changeCategory(newCategory) {
+                category = newCategory;
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i].category === newCategory || newCategory==="All") {
+                        markers[i].setVisible(true);
+                    } else {
+                        markers[i].setVisible(false);
+                    }
+                }
+            }
+            let isOn = false;
+            let isDown = false;
+            function toggle() {
+                const toggleOff = document.querySelector(".toggle-off");
+                const toggleOn = document.querySelector(".toggle-on");
+            
+                if (!isOn) {
+                toggleOff.style.backgroundColor = "gray";
+                toggleOn.style.backgroundColor = "green";
+                isOn = true;
+                } else {
+                toggleOff.style.backgroundColor = "green";
+                toggleOn.style.backgroundColor = "gray";
+                isOn = false;
+                }
+            }
+
+            function filter() {
+                const dropDown = document.getElementById("category")
+                if (!isDown) {
+                    dropDown.innerHTML = (category + '&#9650; <ul id="dropDown"><li onClick="changeCategory(\'Employment\')">Employment</li><li onClick="changeCategory(\'Learn English\')">Learn English</li><li onClick="changeCategory(\'All\')">All</li></ul>');
+                    isDown = true;
+                } else {
+                    dropDown.innerHTML = (category + '&#9660;');
+                    isDown = false;
+                }
+            }
+
+            
+            
+
+        </script>
     </head>
     
     <body>
         <header>
-            <div class="topnav">
-                <span class="topheader"><b>Refugee Pal</b></span>
-                <a href="guides.html"><b>Guides</b></a>
-                <a href="find.html"><b>Find</b></a>
-                <a href="doctors.html"><b>Connect with a Professional</b></a>
-                <a href="index.html"><b>Home</b></a>
-              </div>
-        </header>
+            <nav>
+                <div class="left">
+                  <h2 style="color: white; margin: 0;">Refugee Pal</h2>
+                </div>
+                <div class="right">
+                  <a href="index.html">Home</a>
+                  <a href="guides.html">Guides</a>
+                  <a href="connectwithprofessional.html">Connect with Professionals</a>
+                  <a href="find.html">Find</a>
+                </div>
+              </nav>   
+          </header>
         <main>
-            <details>
-                <summary class="mosques">Mosques</summary>
-                <table>
-                    <caption>Mosques and Islamic Centres</caption>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Masjid Al-Noor</td>
-                            <td><address>13526 98A Ave, Surrey, BC V3T 1C8</address></td>
-                            <td>+6049309742</td>
-                        </tr>
-                        <tr>
-                            <td>Guildford Islamic Cultural Centre</td>
-                            <td><address>15290 103A Ave #101, Surrey, BC V3R 7A2</address></td>
-                            <td>+6046706732</td>
-                        </tr>
-                        <tr>
-                            <td>Surrey Jamea Masjid</td>
-                            <td><address>12407 72 Ave, Surrey, BC V3W 2M5</address></td>
-                            <td>+6045967834</td>
-                        </tr>
-                        <tr>
-                            <td>Al Iman Islamic Centre</td>
-                            <td><address>13478 78 Ave #18, Surrey, BC V3W 8J6</address></td>
-                            <td>+6045935123</td>
-                        </tr>
-                        <tr>
-                            <td>Abu Bakr Islamic Centre</td>
-                            <td><address>7375 144 St, Surrey, BC V3W 5S7</address></td>
-                            <td>+7785643717</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </details>
-            <details>
-                <summary class="employment">Employment</summary>
-                <table>
-                    <caption>Employment Services</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Guildford WorkBC</td>
-                            <td><address>10334 152A St #202, Surrey, BC V3R 7P8</address></td>
-                            <td>+6045809740</td>
-                        </tr>
-                        <tr>
-                            <td>ISSofBC Welcome Centre Surrey</td>
-                            <td><address>10334 152A St #301, Surrey, BC V3R 7P8</address></td>
-                            <td>+6046831684</td>
-                        </tr>
-                        <tr>
-                            <td>Whalley WorkBC</td>
-                            <td><address>10362 King George Blvd #160, Surrey, BC V3T 2W5</address></td>
-                            <td>+6045840003</td>
-                        </tr>
-                        <tr>
-                            <td>Newton WorkBC</td>
-                            <td><address>7525 King George Blvd, Surrey, BC V3W 5A8</address></td>
-                            <td>+7787280175</td>
-                        </tr>
-                        <tr>
-                            <td>MOSAIC Surrey Newcomers' Centre</td>
-                            <td><address>7134 King George Blvd #200, Surrey, BC V3W 5A3</address></td>
-                            <td>+7785919334</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </details>
-            <h3>Map Embed Prototype</h3>
-<div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Muslim%20Food%20Bank%20and%20Community%20Centres&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/">divi discount</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">embed google</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+            <div class="mapContainer">
+                <div class="mapContainerLeft">
+                    <div class="map addLeft addRight" id="image"></div>
+                    <div class="map addLeft addRight" id="name">Muslim Food Bank and Community Services<br><span id="address">12941 115 Ave #104, Surrey, BC V320E2</span></div>
+                    <div class="map addLeft" id="website"><a href="https://muslimfoodbank.com"><i class="fa-solid fa-link"></i><br><b>Link</b></a></div>
+                    <div class="map addRight" id="directions"><a href="https://www.google.com/maps/dir//muslim+food+bank+and+community+services+surrey"><i class="fa-solid fa-compass"></i><br><b>Directions</b></a></div>
+                    <div class="map" id="phone"><a href="tel:+18662483868"><i class="fa-solid fa-phone"></i><br><b>Phone</b></a></div>
+                    <div class="map addLeft" id="hours">
+                        <table>
+                            <caption>Hours</caption>
+                            <tr>
+                                <td>Mon.&nbsp;</td>
+                                <td><time>9AM</time>-<time>1PM</time></td>
+                            </tr>
+                            <tr>
+                                <td>Tues.&nbsp;</td>
+                                <td><time>9AM</time>-<time>1PM</time></td>
+                            </tr>
+                            <tr>
+                                <td>Wed.&nbsp;</td>
+                                <td><time>9AM</time>-<time>1PM</time></td>
+                            </tr>
+                            <tr>
+                                <td>Thurs.&nbsp;&nbsp;</td>
+                                <td><time>9AM</time>-<time>1PM</time></td>
+                            </tr>
+                            <tr>
+                                <td>Fri.&nbsp;</td>
+                                <td style="color: red;">Closed</td>
+                            </tr>
+                            <tr>
+                                <td>Sat.&nbsp;</td>
+                                <td><time>10AM</time>-<time>1PM</time></td>
+                            </tr>
+                            <tr>
+                                <td>Sun.&nbsp;</td>
+                                <td style="color: red;">Closed</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="map addRight" id="description">
+                        <span>Description</span>
+                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aperiam aliquam odio placeat nisi obcaecati voluptatibus laboriosam modi recusandae consequatur voluptatem dolorem delectus perferendis provident maiores exercitationem, tenetur eveniet neque.</div>
+                    </div>
+                    <div class="map addRight addLeft addBottom" id="events"></div>
+                </div>
+                <div class="mapContainerRight">
+                    <div class="map addLeft" id="toggle">
+                        <div class="toggle-container" onclick="toggle()">
+                            <div class="toggle-half toggle-off">Map</div>
+                            <div class="toggle-half toggle-on">List</div>
+                        </div>
+                    </div>
+                    <div class="map" id="category" onclick="filter()">All&#9660;</div>
+                    <div class="map" id="more"><a href="#">More on this Topic</a></div>
+                    <div class="map addLeft" id="embed"></div>
+                </div>
         </main>
-        <footer>
-            <hr><p class="foot">&lt;&lt;&lt;&COPY; Antony Zhang and Ali Soufi, 2023 &gt;&gt;&gt;</p>
-        </footer>
     </body>
 </html>

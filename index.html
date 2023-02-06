@@ -7,76 +7,27 @@
         <meta name="description" content="About the creators of Refugee Pal">
         <link rel="icon" type="image/x-icon" href="images/refugeeicon.png">
         <link rel="stylesheet" href="style.css">
-        <style>
-                .container {
-                  display: flex;
-                  position: absolute;
-                  align-items: center;
-                }
-
-                .search {
-                  bottom: 50vh;
-                  left: 35vw;
-                  right: 35vw;
-                }
-
-                .connect {
-                  bottom: 0vh;
-                  left: 33vw;
-                  right: 33vw;
-                }
-
-                form {
-                  display: flex;
-                  align-items: center;
-                  background-color: #f2f2f2;
-                  padding: 0.7rem;
-                  border-radius: 0.5rem;
-                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-                }
-
-                form.block {
-                  display: inline-block;
-                  padding: 1.25rem;
-                }
-              
-                input[type="text"] {
-                  width: 65%;
-                  padding: 10px;
-                  border: none;
-                  font-size: 18px;
-                  margin-right: 10px;
-                  text-align: center;
-                }
-              
-                button[type="submit"] {
-                  background-color: #2c2d2c;
-                  color: #fff;
-                  padding-left: 1rem;
-                  padding-right: 1rem;
-                  font-weight: 500;
-                  border: 1px;
-                  border-radius: 0.5rem;
-                  cursor: pointer;
-                  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
-                }
-
-          </style>
+        <script src="https://kit.fontawesome.com/c8e5706a2f.js" crossorigin="anonymous"></script>
     </head>
-
+    <style>
+        main {
+          background-color:whitesmoke;
+        }
+    </style>
     <body>
         <header>
-          <title>Refugee Pal</title>
-        </head>
-        <body>
         
-        <div class="topnav">
-          <span class="topheader"><b>Refugee Pal</b></span>
-          <a href="guides.html"><b>Guides</b></a>
-          <a href="find.html"><b>Find</b></a>
-          <a href="doctors.html"><b>Connect with a Professional</b></a>
-          <a href="index.html"><b>Home</b></a>
-        </div>
+          <nav>
+            <div class="left">
+              <h2 style="color: white; margin: 0;">Refugee Pal</h2>
+            </div>
+            <div class="right">
+                <a href="index.html">Home</a>
+                <a href="guides.html">Guides</a>
+                <a href="connectwithprofessional.html">Connect with Professionals</a>
+                <a href="find.html">Find</a>
+            </div>
+          </nav> 
         </header>
         <main>
             <img src="images/refugeepalbanner.png" alt="main banner">
@@ -87,47 +38,20 @@
                 </form>
             </div>
             <img src="images/healthcare.png" alt="find a professional banner">
-            <div class="container connect">
-              <form action="#" class ="block">
-                <h2>Connect with a Professional</h2><br>
-                <label for="lang">Language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <select id="lang">
-                  <option value="No preference">No preference</option>
-                  <option value="Arabic">Arabic</option>
-                  <option value="Pashto">Pashto</option>
-                  <option value="Dari">Dari</option>
-                  <option value="Farsi">Farsi</option>
-                  <option value="Ukrainian">Ukrainian</option>
-                </select><br>
-                <label for="type">I want to see a&nbsp;</label>
-                <select id="type">
-                  <option value="Doctor">Doctor/Physician</option>
-                  <option value="Arabic">Lawyer</option>
-                  <option value="Pashto">Therapist</option>
-                </select><br>
-                <button type="submit">Go</button>
-            </div>
             
-              
+            <div></div>
             <div class="mainContainer">
-              <a href="#" class="mainLeftLink one"><img src="images/employment.png" alt="employment icon"></a>
-              <a href="#" class="mainLeftLink one">Category 2</a>
-              <a href="#" class="mainLeftLink one">Category 3</a>
+              <a href="#" class="mainLeftLink one" id="employment">Employment</a>
+              <a href="#" class="mainLeftLink one" id="english">Learn English</a>
+              <a href="#" class="mainLeftLink one" id="food">Food</a>
               <a href="#" class="mainRightLink one">Event 1</a>
-              <a href="#" class="mainLeftLink two">Catgeory 4</a>
-              <a href="#" class="mainLeftLink two">Category 5</a>
-              <a href="#" class="mainLeftLink two">Category 6</a>
+              <a href="#" class="mainLeftLink two" id="worship">Worship</a>
+              <a href="#" class="mainLeftLink two" id="socialServices">Settlement</a>
+              <a href="#" class="mainLeftLink two" id="programs">Events & Programs</a>
               <a href="#" class="mainRightLink two">Event 2</a>
-              <a href="#" class="mainLeftLink three">Catgeory 7</a>
-              <a href="#" class="mainLeftLink three">Category 8</a>
-              <a href="#" class="mainLeftLink three">Category 9</a>
               <a href="#" class="mainRightLink three">Event 3</a>
-              <a href="#" class="mainRightLink four">Event 4</a>
             </div>
               
         </main>
-        <footer>
-            <hr><p class="foot">&lt;&lt;&lt;&COPY; Antony Zhang and Ali Soufi, 2023 &gt;&gt;&gt;</p>
-        </footer>
     </body>
 </html>
